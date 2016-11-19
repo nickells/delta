@@ -1,0 +1,14 @@
+{
+  "name": "youtube-diff",
+  "version": "1.0.0",
+  "description": "a simple time differ for youtube",
+  "main": "hello.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nickells",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.16.0"
+  }
+}

@@ -4,14 +4,13 @@ const progressBar = document.getElementsByClassName('ytp-progress-bar')[0]
 const cursorTimeContainer = document.getElementsByClassName('ytp-tooltip-text-wrapper')[0]
 const timeSpan = document.createElement('span')
 
-cursorTimeElement.style.textAlign = 'center'
-
 timeSpan.className = 'ytp-tooltip-text'
 
 cursorTimeContainer.appendChild(timeSpan)
 
 function formatDuration(duration){
   let totalSeconds = duration.asSeconds()
+
   let operator
 
   if (totalSeconds > 0) operator = '+'
@@ -32,19 +31,22 @@ function formatDuration(duration){
 let int
 
 function setTimeSpan(){
-  const cursorTime = moment(cursorTimeElement.innerHTML, "mm:ss")
-  const currentTime = moment(currentTimeElement.innerHTML, "mm:ss")
+  const formatCursorTime = cursorTimeElement.innerHTML.length > 5 ? 'hh:mm:ss' : 'mm:ss'
+  const formatCurrentTime = currentTimeElement.innerHTML.length > 5 ? 'hh:mm:ss' : 'mm:ss'
+  const cursorTime = moment(cursorTimeElement.innerHTML, formatCursorTime)
+  const currentTime = moment(currentTimeElement.innerHTML, formatCurrentTime)
   const diff = moment.duration(cursorTime.diff(currentTime))
   timeSpan.innerHTML = formatDuration(diff)
 }
 
 progressBar.onmousemove = function(e){
+  console.log('mousemove')
   setTimeSpan()
   int = setInterval(setTimeSpan, 1000)
 }
 
 progressBar.onmouseleave = function(){
-  cursorTimeElement.style.display = 'block'
+  cursorTimeElement.style.display = 'inline'
   timeSpan.style.display = 'none'
   clearInterval(int)
 }

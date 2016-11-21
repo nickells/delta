@@ -4,7 +4,7 @@
   "name": "Delta for YouTube",
   "short_name": "Delta",
   "description": "Show a time difference in the YouTube progress bar.",
-  "version": "1.4",
+  "version": "1.5",
   "icons": { "16": "icons/delta-16.png",
              "48": "icons/delta-48.png",
             "128": "icons/delta-128.png" },
@@ -12,8 +12,7 @@
       {
         "matches": ["*://*.youtube.com/*"],
         "css": ["delta.css"],
-        "js": ["node_modules/moment/min/moment.min.js", "delta.js"],
-        "run_at": "document_end"
+        "js": ["node_modules/moment/min/moment.min.js", "delta.js"]
       }
     ]
 }
